@@ -56,10 +56,10 @@
         
         };
 
-        const optArticleSelector = '.post',
-        optTitleSelector = '.post-title',
+        const optArticleSelector = '.post';
+        optTitleSelector = '.post-title';
         optTitleListSelector = '.titles';
-        optArticleTagsSelector = '.post-tags .list'
+        optArticleTagsSelector = '.post-tags .list';
 
         const generateTitleLinks = function(){
 
@@ -118,7 +118,7 @@
         }
         generateTitleLinks();
 
-        const generateTag = function(){
+        const generateTags = function(){
             
             /* find all articles */
         
@@ -144,7 +144,6 @@
         
             /* END LOOP: for every article: */
         }
-        
         generateTags();
     }
 }
