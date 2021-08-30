@@ -163,9 +163,10 @@
   generateTags();
 
   // eslint-disable-next-line no-inner-declarations
-  const tagClickHandler = function (event) {
+  function tagClickHandler(event){
 
-    /* prevent default action for this event */
+    /* [DONE] prevent default action for this event */
+    event.preventDefault();
 
     /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
 
@@ -179,20 +180,30 @@
 
     /* make a new constant "tag" and extract tag from the "href" constant */
 
-    const tag = article.querySelector('href');
+    const tag = document.querySelector(href);
     console.log(tag);
 
     /* find all tag links with class active */
 
-    const activeArticles = document.querySelectorAll('.post.active');
+    const activeTags = document.querySelectorAll('.tag.active');
 
     /* START LOOP: for each active tag link */
 
-    /* remove class active */
+    for(const activeTag of activeTags){
 
-    /* END LOOP: for each active tag link */
+
+      /* [DONE] remove class active */
+
+      activeTag.classList.remove('active');
+
+      /* END LOOP: for each active tag link */
+
+    }
 
     /* find all tag links with "href" attribute equal to the "href" constant */
+
+    const targetTag = document.querySelectorAll('a.active[href^="#tag-"]');
+    console.log(targetTag);
 
     /* START LOOP: for each found tag link */
 
@@ -201,25 +212,26 @@
     /* END LOOP: for each found tag link */
 
     /* execute function "generateTitleLinks" with article selector as argument */
+  }
 
-    const tags = article.querySelectorAll('.post-tags .list');
-    for(const tag of tags){
-      tag.addEventListener('click', tagClickHandler);
-      console.log(tags);
-    }
+  const tags = document.querySelectorAll('.post-tags .list');
+  for(const tag of tags){
+    tag.addEventListener('click', tagClickHandler);
+    console.log(tags);
+  }
 
-    // eslint-disable-next-line no-inner-declarations
-    function addClickListenersToTags(){
+  // eslint-disable-next-line no-inner-declarations
+  function addClickListenersToTags(){
 
-      /* find all links to tags */
+    /* find all links to tags */
 
-      /* START LOOP: for each link */
+    /* START LOOP: for each link */
 
-      /* add tagClickHandler as event listener for that link */
+    /* add tagClickHandler as event listener for that link */
 
-      /* END LOOP: for each link */
-    }
-    addClickListenersToTags();
-  };
-  tagClickHandler();
-}
+    /* END LOOP: for each link */
+  }
+
+  addClickListenersToTags();
+};
+
