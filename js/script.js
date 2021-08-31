@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 {
   'use strict';
 
@@ -149,6 +150,7 @@
         /* [DONE] add generated code to html variable */
 
         let html = '';
+        console.log(html);
 
         /* [DONE] insert HTML of all the links into the tags wrapper */
 
@@ -162,8 +164,7 @@
   };
   generateTags();
 
-  // eslint-disable-next-line no-inner-declarations
-  function tagClickHandler(event){
+  const tagClickHandler = function (event){
 
     /* [DONE] prevent default action for this event */
     event.preventDefault();
@@ -171,25 +172,25 @@
     /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
 
     const clickedElement = this;
-    console.log(`Link was clicked! ${event}`);
+    //console.log(`Link was clicked! ${event}`);
 
     /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
 
     const href = clickedElement.getAttribute('href');
-    console.log(href);
+    //console.log(href);
 
     /* make a new constant "tag" and extract tag from the "href" constant */
 
-    const tag = document.querySelector(href);
+    const tag = href.replace('#tag-', '');
     console.log(tag);
 
     /* find all tag links with class active */
 
-    const activeTags = document.querySelectorAll('.tag.active');
+    const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
 
     /* START LOOP: for each active tag link */
 
-    for(const activeTag of activeTags){
+    for(let activeTag of activeTags){
 
 
       /* [DONE] remove class active */
@@ -202,36 +203,42 @@
 
     /* find all tag links with "href" attribute equal to the "href" constant */
 
-    const targetTag = document.querySelectorAll('a.active[href^="#tag-"]');
-    console.log(targetTag);
+    const targetTags = document.querySelectorAll('a[href="' + href + '"]');
+    //console.log(targetTags);
 
     /* START LOOP: for each found tag link */
 
-    /* add class active */
+    for(let targetTag of targetTags){
 
-    /* END LOOP: for each found tag link */
+      /* add class active */
 
+      targetTag.classList.add('active');
+    }
     /* execute function "generateTitleLinks" with article selector as argument */
-  }
 
-  const tags = document.querySelectorAll('.post-tags .list');
-  for(const tag of tags){
-    tag.addEventListener('click', tagClickHandler);
-    console.log(tags);
-  }
+    generateTitleLinks('[data-tags~="' + tag + '"]');
+
+  };
 
   // eslint-disable-next-line no-inner-declarations
-  function addClickListenersToTags(){
+  const addClickListenersToTagLinks = function(){
 
     /* find all links to tags */
 
+    const tagLinks = document.querySelectorAll('a[href^="#tag-"]');
+
     /* START LOOP: for each link */
 
-    /* add tagClickHandler as event listener for that link */
+    for(tagLink of tagLinks){
 
-    /* END LOOP: for each link */
-  }
+      /* add tagClickHandler as event listener for that link */
 
-  addClickListenersToTags();
-};
+      tagLink.addEventListener('click', tagClickHandler);
+
+      /* END LOOP: for each link */
+    }
+  };
+  addClickListenersToTagLinks();
+
+}
 
