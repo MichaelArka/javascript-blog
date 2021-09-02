@@ -101,7 +101,13 @@ body {
     margin-bottom: 12px;
   }
 }
+.post-author {
 
+  .active {
+    font-weight: bold;
+    color: green;
+  }
+}
 /* Post */
 
 .post {
