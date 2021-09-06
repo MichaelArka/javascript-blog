@@ -101,8 +101,8 @@ body {
     margin-bottom: 12px;
   }
 }
-.post-author {
 
+.post-author {
   .active {
     font-weight: bold;
     color: green;
@@ -137,3 +137,28 @@ body {
     text-decoration: none;
   }
 }
+
+.list.tags li{
+  display: inline;
+  margin: 4px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.tag-size-5 {
+  color: rgba(11, 177, 177, 0.931);
+  font-size: 35px;
+}
+
+.tag-size-3 {
+  color: rgba(11, 177, 177, 0.931);
+  font-size: 25px;
+}
+
+.tag-size-1 {
+  color: rgba(11, 177, 177, 0.931);
+  font-size: 18px;
+}
+
