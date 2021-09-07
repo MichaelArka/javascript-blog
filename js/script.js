@@ -209,7 +209,7 @@
 
         /* [DONE] insert HTML of all the links into the tags wrapper */
 
-        //titleList.innerHTML = titleList.innerHTML + ' ' + tagLinkHTML;
+        titleList.innerHTML = titleList.innerHTML + ' ' + tagLinkHTML;
 
         /* END LOOP: for each tag */
       }
@@ -389,7 +389,7 @@
         });
       }
       /* [DONE] insert HTML of all the links into the tags wrapper */
-      //authorWrapper.innerHTML = authorWrapper.innerHTML + authorLinkHTML;
+      authorWrapper.innerHTML = authorWrapper.innerHTML + authorLinkHTML;
 
       /*[NEW] add HTML from allAutorsHTML to tagList */
       authorList.innerHTML = templates.authorCloudLink(allAuthorsData)
